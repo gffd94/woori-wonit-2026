@@ -1,0 +1,12 @@
+echo "# woori-wonit-2026" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/gffd94/woori-wonit-2026.git
+git push -u origin main
+
+########### 새로 내용을 변경했을 때
+git add README.md # + 버튼 으로 해결
+git commit -m "second commit"
+git push -u origin main
