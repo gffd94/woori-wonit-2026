@@ -75,7 +75,7 @@ function renderTransactionList() {
 }
 
 function renderBalance() {
-  const balanceEl = document.getElementById("blance");
+  const balanceEl = document.getElementById("balance");
   balanceEl.textContent = formatCurrency(ACCOUNTS[0].balance);
 }
 
@@ -83,6 +83,8 @@ function renderBalance() {
 
 function handleDeposit() {
   ACCOUNTS[0].balance += 10000;
+  renderBalance();
+  renderAccountList();
   alert("10,000원이 입금되었습니다.");
 }
 
@@ -93,12 +95,19 @@ function calcInterest(balance, rate) {
 }
 
 const interestBtn = document.querySelector("#interestBtn");
+
 interestBtn.addEventListener("click", () => {
-  const rate = 0.0175; // 우대금리 연 1.75%
-  const interest = calcInterest(ACCOUNTS[0].balance, rate);
+  const rate = 0.0175;
+  const interest = Math.round(calcInterest(ACCOUNTS[0].balance, rate));
   const newBalance = ACCOUNTS[0].balance + interest;
+
+  ACCOUNTS[0].balance = newBalance;
+  renderBalance();
+  renderAccountList();
+
   document.querySelector("#interestResult").textContent =
-    "이자 " + interest + "원 적용 → 잔액 " + newBalance + "원";
+    "이자 " + formatCurrency(interest) +
+    " 적용 → 잔액 " + formatCurrency(newBalance);
 });
 
 // ---------- 환율 ----------
@@ -107,8 +116,10 @@ async function fetchExchangeRate() {
   return new Promise((resolve) => setTimeout(() => resolve(1384), 500));
 }
 
-const rate = fetchExchangeRate();
-document.querySelector("#exchangeRate").textContent = rate + "원";
+fetchExchangeRate().then((rate) => {
+  document.querySelector("#exchangeRate").textContent =
+    formatCurrency(rate);
+});
 
 // ---------- 이체 확인 모달 ----------
 
@@ -126,6 +137,16 @@ closeModalBtn.addEventListener("click", () => {
 });
 
 confirmTransferBtn.addEventListener("click", () => {
+
+  if (ACCOUNTS[0].balance < 320000) {
+   alert("잔액이 부족합니다.");
+   return;
+  }
+
+  ACCOUNTS[0].balance -= 320000;
+  renderBalance();
+  renderAccountList();
+
   modalOverlay.classList.add("hidden");
   alert("이체가 완료되었습니다.");
 });
@@ -137,6 +158,6 @@ renderCategorySummary();
 renderTransactionList();
 
 const depositBtn = document.querySelector("#depositBtn");
-depositBtn.addEventListener("click", handleDeposit());
+depositBtn.addEventListener("click", handleDeposit);
 
 renderBalance();
