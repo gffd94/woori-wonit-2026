@@ -1,0 +1,60 @@
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 24px;
+        background: #f5f7fa;
+        font-family: Arial, sans-serif;
+    }
+
+    .account-card {
+        width: min(100%, 420px);
+        margin: 0 auto;
+        padding: 24px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    }
+
+    .account-info {
+        display: grid;
+        gap: 12px;
+        color: #333;
+        line-height: 1.5;
+    }
+
+    .account-balance {
+        color: #1464c0;
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .account-status {
+        color: #16834b;
+        font-size: 0.95rem;
+    }
+
+    @media (max-width: 480px) {
+        body {
+            padding: 16px;
+        }
+
+        .account-card {
+            padding: 20px;
+            border-radius: 12px;
+        }
+    }
+</style>
+
+<!-- 계좌번호, 잔액, 상태가 보이는 은행 계좌 카드 한 장 -->
+<div class="account-card">
+    <div class="account-info">
+        <div class="account-number">계좌번호: 123-456-789</div>
+        <div class="account-balance">잔액: 1,000,000원</div>
+        <div class="account-status">상태: 정상</div>
+        
+    </div>  
+</div>  
