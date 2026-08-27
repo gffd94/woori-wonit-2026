@@ -9,7 +9,7 @@ node_modules/
 playwright-report/
 test-results/
 tests/
-playwright.config.js/
+playwright.config.js
 눈에보임.txt
 
 # 외부 노출을 원하지 않는 파일이나 아이디, 비밀번호 등 민감 정보들을 디렉토리 숨김처리
