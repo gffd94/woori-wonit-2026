@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="컴퓨터공학을 전공하고 백엔드 개발을 공부하는 SeungTae의 포트폴리오">
+	<title>SeungTae | Backend Developer</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0" rel="stylesheet">
+	<style>
+		:root {
+			--ink: #17211b;
+			--muted: #617066;
+			--green: #1f6b4f;
+			--mint: #d8f0df;
+			--cream: #f7f8f3;
+			--paper: #ffffff;
+			--line: #dce5dd;
+			--orange: #e77842;
+			--shadow: 0 18px 44px rgba(27, 65, 45, .11);
+		}
+
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body {
+			margin: 0;
+			color: var(--ink);
+			background: var(--cream);
+			font-family: "Manrope", "Noto Sans KR", sans-serif;
+			line-height: 1.6;
+		}
+		a { color: inherit; text-decoration: none; }
+		button { font: inherit; }
+		.material-symbols-outlined { vertical-align: middle; font-size: 20px; }
+
+		header {
+			position: sticky;
+			top: 0;
+			z-index: 5;
+			background: rgba(247, 248, 243, .9);
+			border-bottom: 1px solid rgba(220, 229, 221, .8);
+			backdrop-filter: blur(16px);
+		}
+		nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			max-width: 1180px;
+			margin: auto;
+			padding: 16px 28px;
+		}
+		.brand { font-size: 1.1rem; font-weight: 800; letter-spacing: -.04em; }
+		.brand span { color: var(--orange); }
+		nav ul { display: flex; gap: 8px; padding: 0; margin: 0; list-style: none; }
+		nav a { display: block; padding: 8px 14px; color: var(--muted); border-radius: 8px; font-size: .9rem; font-weight: 700; }
+		nav a:hover, nav a[aria-current="page"] { color: var(--green); background: var(--mint); }
+
+		main { overflow: hidden; }
+		.hero {
+			display: grid;
+			grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+			gap: 72px;
+			align-items: center;
+			max-width: 1180px;
+			min-height: 610px;
+			margin: auto;
+			padding: 82px 28px 92px;
+		}
+		.eyebrow { margin: 0 0 18px; color: var(--orange); font-family: "DM Mono", monospace; font-size: .78rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+		h1 { max-width: 720px; margin: 0; font-size: clamp(3.4rem, 7vw, 6.5rem); line-height: .98; letter-spacing: -.08em; }
+		h1 em { color: var(--green); font-style: normal; }
+		.lead { max-width: 540px; margin: 28px 0 0; color: var(--muted); font-size: 1.05rem; }
+		.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+		.button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 1px solid var(--green); border-radius: 8px; color: #fff; background: var(--green); font-weight: 700; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+		.button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(31, 107, 79, .22); }
+		.button.secondary { color: var(--green); background: transparent; }
+		.hero aside { position: relative; padding: 34px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); box-shadow: var(--shadow); }
+		.hero aside::before { position: absolute; top: -14px; right: 28px; width: 70px; height: 28px; background: var(--orange); content: ""; transform: rotate(4deg); }
+		.code-label { color: var(--muted); font-family: "DM Mono", monospace; font-size: .74rem; }
+		pre { overflow: auto; margin: 18px 0 0; color: var(--green); font-family: "DM Mono", monospace; font-size: .87rem; line-height: 1.85; }
+		.comment { color: #9aa99e; }
+
+		section { padding: 92px 28px; }
+		.section-inner { max-width: 1180px; margin: auto; }
+		.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
+		h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1.05; letter-spacing: -.07em; }
+		.section-heading p { max-width: 380px; margin: 0; color: var(--muted); }
+		.about { background: var(--green); color: #f4fff5; }
+		.about .section-heading p { color: #b9d5c2; }
+		.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+		.fact { padding: 24px 0; border-top: 1px solid rgba(216, 240, 223, .28); }
+		.fact strong { display: block; margin-bottom: 5px; color: var(--mint); font-family: "DM Mono", monospace; font-size: .76rem; }
+		.fact p { margin: 0; font-size: 1.12rem; }
+		.stack-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0; margin: 0; list-style: none; }
+		.stack-list li { padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+		.stack-list strong { display: block; margin-bottom: 5px; color: var(--green); }
+		.stack-list span { color: var(--muted); font-size: .92rem; }
+		.contact { padding-bottom: 110px; }
+		.contact-box { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 34px; border-radius: 12px; background: var(--mint); }
+		.contact-box p { margin: 6px 0 0; color: var(--muted); }
+		footer { padding: 26px 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; }
+		footer p { max-width: 1180px; margin: auto; }
+		.reveal { animation: rise .65s both; }
+		@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+		@media (max-width: 720px) {
+			nav { padding: 14px 18px; }
+			nav ul { gap: 0; }
+			nav a { padding: 8px 9px; font-size: .78rem; }
+			.hero { grid-template-columns: 1fr; gap: 42px; min-height: 0; padding: 70px 20px 80px; }
+			h1 { font-size: clamp(3.1rem, 16vw, 5rem); }
+			section { padding: 70px 20px; }
+			.section-heading, .contact-box { align-items: start; flex-direction: column; }
+			.about-grid, .stack-list { grid-template-columns: 1fr; }
+			.contact-box { padding: 26px; }
+			footer { padding: 22px 20px; }
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav aria-label="주요 메뉴">
+			<a class="brand" href="index.html">Seung<span>Tae</span></a>
+			<ul>
+				<li><a href="index.html" aria-current="page">About</a></li>
+				<li><a href="project.html">Project</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero" aria-labelledby="intro-title">
+			<article class="reveal">
+				<p class="eyebrow">Backend developer / 2026</p>
+				<h1 id="intro-title">꾸준히 성장하는<br><em>개발자</em>입니다.</h1>
+				<p class="lead">Java와 Spring Boot를 중심으로 단단한 서버를 만들고, 문제를 끝까지 이해하는 과정을 좋아합니다.</p>
+				<p class="actions">
+					<a class="button" href="https://wintae.tistory.com/" target="_blank" rel="noreferrer"><span class="material-symbols-outlined" aria-hidden="true">menu_book</span>Blog</a>
+					<a class="button secondary" href="mailto:29088981l@gmail.com"><span class="material-symbols-outlined" aria-hidden="true">mail</span>Contact</a>
+				</p>
+			</article>
+			<aside class="reveal" aria-label="개발자 소개 코드">
+				<span class="code-label">profile.java</span>
+				<pre><span class="comment">// building things that last</span>
+public class Backend_Developer {
+	String major = "Computer Science";
+	String study = "Java, Spring Boot";
+	String focus = "Backend Development";
+	String goal = "Keep growing";
+}</pre>
+			</aside>
+		</section>
+
+		<section class="about" aria-labelledby="about-title">
+			<div class="section-inner">
+				<div class="section-heading">
+					<h2 id="about-title">About me</h2>
+					<p>복잡한 문제를 작게 나누고, 오래 유지되는 구조로 답을 만드는 개발자입니다.</p>
+				</div>
+				<div class="about-grid">
+					<article class="fact"><strong>01 / MAJOR</strong><p>컴퓨터공학을 전공했습니다.</p></article>
+					<article class="fact"><strong>02 / CURRENTLY</strong><p>Java, Spring Boot, 알고리즘을 공부합니다.</p></article>
+					<article class="fact"><strong>03 / INTEREST</strong><p>안정적인 백엔드 시스템과 데이터에 관심이 있습니다.</p></article>
+					<article class="fact"><strong>04 / PRINCIPLE</strong><p>작은 성장을 꾸준히 쌓아갑니다.</p></article>
+				</div>
+			</div>
+		</section>
+
+		<section aria-labelledby="stack-title">
+			<div class="section-inner">
+				<div class="section-heading">
+					<h2 id="stack-title">Stack</h2>
+					<p>지금 손에 익히고 있는 기술과 협업 도구입니다.</p>
+				</div>
+				<ul class="stack-list">
+					<li><strong>Languages</strong><span>Java · Kotlin</span></li>
+					<li><strong>Frameworks</strong><span>Spring Boot · JPA · JWT</span></li>
+					<li><strong>Database</strong><span>MySQL</span></li>
+					<li><strong>Infrastructure</strong><span>Amazon EC2 · RDS · Docker</span></li>
+					<li><strong>CI/CD</strong><span>GitHub Actions</span></li>
+					<li><strong>Collaboration</strong><span>GitHub · Discord · Notion · Slack</span></li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="contact" aria-labelledby="contact-title">
+			<div class="section-inner contact-box">
+				<div><h2 id="contact-title">Let's connect.</h2><p>새로운 이야기와 협업을 기다리고 있습니다.</p></div>
+				<button class="button" id="copy-email" type="button"><span class="material-symbols-outlined" aria-hidden="true">content_copy</span><span>이메일 복사</span></button>
+			</div>
+		</section>
+	</main>
+
+	<footer><p><span id="year"></span> SeungTae. Built with curiosity.</p></footer>
+	<script>
+		const email = "29088981l@gmail.com";
+		const copyButton = document.querySelector("#copy-email");
+		const copyLabel = copyButton.querySelector("span:last-child");
+		copyButton.addEventListener("click", async () => {
+			try {
+				await navigator.clipboard.writeText(email);
+				copyLabel.textContent = "복사 완료";
+				window.setTimeout(() => { copyLabel.textContent = "이메일 복사"; }, 1800);
+			} catch {
+				window.location.href = `mailto:${email}`;
+			}
+		});
+		document.querySelector("#year").textContent = new Date().getFullYear();
+	</script>
+</body>
+</html>

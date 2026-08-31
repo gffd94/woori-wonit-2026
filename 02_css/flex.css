@@ -1,0 +1,32 @@
+body {
+    margin: 0px;
+}
+
+/* flex는 부모 container에 걸어넣고 자식 container에  */
+
+.container {
+    height: 100vh;
+    display: flex;
+    /* 중심 축 정하는 옵션 */
+    /* flex-direction: row;  */
+    flex-wrap: wrap;
+    flex-basis: 100px;
+    justify-content: space-evenly;
+    /* 중심축의 정렬 옵션 */
+    align-items: flex-end;
+}
+
+.item {
+    border: black dashed;
+}
+
+/* 필요한 경우, order라는 속성으로 자식 요소의 순서를 조절할 수 있습니다. */
+#item4 {
+    order: -1;
+    /* 특정 아이템이 차지하는 영역의 비중을 차지함. */
+    flex-basis: 30%;
+}
+
+#item5 {
+    order: -2;
+}
