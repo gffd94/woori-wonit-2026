@@ -1,0 +1,234 @@
+/*
+  전체 페이지 기본 초기화
+  - box-sizing: border-box로 카드 크기 계산을 안정적으로 함
+  - html/body의 폭과 높이를 최소값으로 잡아 넘침 방지
+  - 바깥 여백을 제거해 화면 경계에 붙지 않게 설정
+*/
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    background: #eef3f7;
+    color: #1f2933;
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    padding: 12px;
+}
+
+/*
+  전체 레이아웃 컨테이너
+  - 카드 목록이 화면 가운데 배치되도록 제한 너비 설정
+  - margin: auto로 좌우 중앙 정렬
+*/
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/*
+  카드 전체 배열 영역
+  - display: grid로 4개의 열을 만들고 카드들을 한 번에 정렬
+  - gap으로 카드 사이 여백 설정
+  - 4x3 형태를 기본으로 유지
+*/
+.bank-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, auto));
+    gap: 10px;
+    align-content: start;
+}
+
+/*
+  각 카드 자체
+  - display: flex + flex-direction: column으로 내부 요소를 세로 정렬
+  - 카드 내부의 header/body/footer가 자연스럽게 쌓이도록 구성
+  - 최소 높이를 지정해서 글자가 넘치지 않게 여유 공간 확보
+*/
+.bank-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    padding: 12px 14px 10px;
+    border: 1px solid #e4e9ed;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+    overflow: hidden;
+}
+
+/*
+  카드 상단 제목 영역
+  - 은행명 위아래 경계를 분리하고, 긴 이름이 길어질 경우 말줄임 처리
+*/
+.card-header {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #edf0f2;
+}
+
+.card-header h2 {
+    margin: 0;
+    color: #123b5d;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*
+  카드 본문 영역
+  - flex: 1로 남는 공간을 채워서 footer 버튼이 아래로 붙도록 함
+*/
+.card-body {
+    flex: 1;
+    padding: 8px 0;
+}
+
+.bank-card dl {
+    margin: 0;
+}
+
+.bank-card dt {
+    margin-bottom: 3px;
+    color: #6b7785;
+    font-size: 10px;
+}
+
+.bank-card dd {
+    margin: 0 0 8px;
+    color: #263746;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.bank-card dd:last-child {
+    margin-bottom: 0;
+    color: #123b5d;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/*
+  하단 버튼 영역
+  - display: flex로 두 버튼을 한 줄에 배치
+  - justify-content: space-between으로 좌우 간격 유지
+*/
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.bank-card button {
+    flex: 1;
+    min-height: 30px;
+    padding: 6px 8px;
+    border: 1px solid #1d6fa5;
+    border-radius: 8px;
+    background: #1d6fa5;
+    color: #ffffff;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.bank-card button:last-child {
+    border-color: #c9d4dc;
+    background: #ffffff;
+    color: #1d6fa5;
+}
+
+.bank-card button:hover {
+    filter: brightness(0.96);
+}
+
+/*
+  반응형 처리
+  - 900px 이하부터 열 수를 3개로 줄여서 카드가 너무 넓지 않게 조정
+  - 700px 이하부터 2열로 줄어들게 처리
+  - 480px 이하부터 1열로 쌓이도록 처리
+*/
+@media (max-width: 1200px) {
+    .bank-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .bank-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .bank-card {
+        min-height: 180px;
+    }
+
+    .card-header h2 {
+        font-size: 15px;
+    }
+
+    .bank-card dd:last-child {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 700px) {
+    .bank-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .bank-card {
+        min-height: 170px;
+        padding: 10px 12px 8px;
+    }
+
+    .card-header h2 {
+        font-size: 14px;
+    }
+
+    .bank-card dd {
+        font-size: 11px;
+    }
+
+    .bank-card dd:last-child {
+        font-size: 15px;
+    }
+
+    .bank-card button {
+        min-height: 28px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    .bank-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .bank-card {
+        min-height: 150px;
+    }
+}

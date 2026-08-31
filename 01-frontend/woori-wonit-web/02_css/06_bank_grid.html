@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Card Grid</title>
+    <link rel="stylesheet" href="06_bank_grid.css">
+</head>
+<body>
+    <div class="container">
+        <!--
+          전체 카드 목록 영역
+          - div.bank-grid는 카드들을 한 번에 정렬하는 그리드 컨테이너로 사용
+          - 4개 열 기준으로 기본 배치하고, 화면이 줄어들면 반응형으로 열 수를 조절
+        -->
+        <div class="bank-grid" aria-label="은행 카드 목록">
+            <!--
+              개별 카드 하나
+              - div.bank-card는 각 은행 정보가 들어가는 카드 박스
+              - 내부는 header / body / footer 구조로 나누어 정리
+            -->
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>국민은행</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>123-456-789012</dd>
+                        <dt>잔액</dt>
+                        <dd>2,340,000 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>하나은행</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>321-654-987654</dd>
+                        <dt>잔액</dt>
+                        <dd>1,890,500 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>우리은행</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>654-321-876543</dd>
+                        <dt>잔액</dt>
+                        <dd>866,200 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>기업은행</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>489-112-722519</dd>
+                        <dt>잔액</dt>
+                        <dd>4,560,000 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>농협은행</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>356-889-120452</dd>
+                        <dt>잔액</dt>
+                        <dd>3,240,000 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>카카오뱅크</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>777-05-210145</dd>
+                        <dt>잔액</dt>
+                        <dd>1,120,400 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>토스뱅크</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>333-12-554398</dd>
+                        <dt>잔액</dt>
+                        <dd>986,100 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>SC제일은행</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>212-872-441006</dd>
+                        <dt>잔액</dt>
+                        <dd>5,440,300 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>부산은행</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>932-444-200671</dd>
+                        <dt>잔액</dt>
+                        <dd>2,750,000 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>대구은행</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>503-874-110258</dd>
+                        <dt>잔액</dt>
+                        <dd>1,430,700 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>광주은행</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>142-908-336580</dd>
+                        <dt>잔액</dt>
+                        <dd>2,100,000 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+
+            <div class="bank-card">
+                <div class="card-header">
+                    <h2>전북은행</h2>
+                </div>
+                <div class="card-body">
+                    <dl>
+                        <dt>계좌번호</dt>
+                        <dd>660-118-740224</dd>
+                        <dt>잔액</dt>
+                        <dd>980,300 원</dd>
+                    </dl>
+                </div>
+                <div class="card-footer">
+                    <button type="button">이체</button>
+                    <button type="button">상세</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
