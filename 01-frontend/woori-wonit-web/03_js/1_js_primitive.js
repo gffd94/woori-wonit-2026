@@ -240,3 +240,27 @@ if(menu1 === "짜장면" || menu1 === "짬뽕" || menu1 === "샐러드") {
 // 삼항연산자 - 불표현식 ? 참 : 거짓
 var menu2 = "아무거나";
 console.log((menu1 === "짜장면" || menu1 === "짬뽕" || menu1 === "샐러드") ? "같이먹기" : "따로먹기");
+
+console.log("---------------------------------------------------------");
+
+// 1.var age라는 변수에 나이를 입력받고,
+// 나이가 18보다 적으면 미성년자
+// 18이상이면 성인
+// 2. 13 미만이면 어린이 추가.
+
+const numberPattern = /^[0-9]+$/;
+var age = prompt("나이를 입력해주세요.");
+while (age <= 0 || numberPattern.test(age) !== true) {
+    alert("나이를 다시 입력해주세요.");
+    age = prompt("나이를 입력해주세요.");
+}
+age = Number(age);
+if(age < 13) {
+        alert("당신은 어린이 입니다.");
+} else if(age < 18 ) {
+        alert("당신은 미성년자 입니다.");
+} else {
+        alert("당신은 성인입니다.");
+}
+
+    

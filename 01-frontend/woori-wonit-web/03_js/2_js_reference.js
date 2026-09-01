@@ -5,12 +5,37 @@
 //   - 순서대로 값을 꺼낼 수 있다. (index로)
 //   - 자바스크립트의 배열 index는 0부터 시작
 //   - 배열의 길이는 .length 라는 속성으로 확인
-
-
+var arr1 = [1, '가', true, null, , [1,2,3]];
+arr1 
+console.log(arr1[5]);
+console.log(arr1.length);
 
 // 실습: array1이라는 배열을 만들고 apple, banana, carrot 세개의 문자열을 각 index에 넣어보세요.
+var array1 = ["apple", "banana", "carrot"];
+console.log(array1[1]);
+// 순서대로 값을 저장하는 구조(선형 자료구조)
+// 맨 뒤에 값을 삽입 push(), 삭제 pop();
+array1.push("dasiy");
+console.log(array1);
+array1.pop();
+console.log(array1);
+// 맨 앞(unshift, shift)이나 중간(splice) 어딘가에 값을넣어야 하는 경우도있음.
+array1.unshift("mario");
+console.log(array1);
+array1.shift();
+console.log(array1);
+// splice(start, delCount, insert); 몇 번째 부터 몇 개를 사제를 하고 그 위치에 뭘 넣을 건지.
+array1.splice(1,1,"dasiy");
+console.log(array1);
+// 맨 뒤에 donut을 추가, dasiy 삭제 후 betray 추가
+array1.splice(3,0,"donut");
+array1.splice(1,1,"betray");
+console.log(array1)
+
 
 // JS의 sort는 기본적으로 유니코드로 정렬을 합니다. 숫자는 어떻게 정렬해야 할까요?
+var numArray = [3,2,16,755,4,72,8,41,24,33,655,36,83,5,7,32,87,13,67];
+console.log(numArray.sort((a,b) => (a-b)));
 
 
 // -2. Set(집합) - 중복을 걸러내는 유형. new Set([1,3,4,5,6,6])
