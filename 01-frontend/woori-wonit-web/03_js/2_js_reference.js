@@ -29,17 +29,24 @@ array1.splice(1,1,"dasiy");
 console.log(array1);
 // 맨 뒤에 donut을 추가, dasiy 삭제 후 betray 추가
 array1.splice(3,0,"donut");
-array1.splice(1,1,"betray");
+array1.splice(1,1,"bee" ,"betray");
 console.log(array1)
 
 
-// JS의 sort는 기본적으로 유니코드로 정렬을 합니다. 숫자는 어떻게 정렬해야 할까요?
-var numArray = [3,2,16,755,4,72,8,41,24,33,655,36,83,5,7,32,87,13,67];
+// JS의 sort는 기본적으로 (문자열)유니코드로 정렬을 합니다. 숫자는 어떻게 정렬해야 할까요?
+var numArray = [3,2,16,755,4,72,8,41,24,33,655,36,83,5,7,32,87,13,67,1.4,NaN,-545,null,0,true,undefined];
 console.log(numArray.sort((a,b) => (a-b)));
 
 
 // -2. Set(집합) - 중복을 걸러내는 유형. new Set([1,3,4,5,6,6])
-
+var set1 = [1,3,4,5,6,6,7,7,7,7,8,8,9];
+set1 = new Set(set1);
+console.log(set1);
+set1.add(10);
+set1.add(7); // 이미 있는 값은 삽입 불가
+console.log(set1);
+set1.delete(7);
+console.log(set1);
 
 // -3. Object(일반 객체) - key(기본 자료형)로 value를 부르는 종류의 dictionary 타입
 //   - key는 기본자료형만 사용 가능합니다. (object, array, function은 불가)
