@@ -158,28 +158,144 @@ for(var [key, value] of map2) {
 // 1. while문 바깥에 조건을 끝낼 실마리를 만들어주기
 // 2. 무한반복으로 작성하고 break, continue로 강제로 흐름을 제어
 
+var i = 5;
+while( i >= 1 ) {
+  console.log(i);
+  i--;
+}
 
+i = 1;
+while( i <= 5) {
+  if(i % 2 === 1) {
+    console.log(i);
+  }
+  i++;
+}
 
+i = 1;
+while(true) {
+  i++;
+  if(i === 3) continue;
+  console.log(i);
+  if(i === 5) break;
+}
+
+i = 0;
 // arr 와 .length 속성을 이용해서 arr의 모든 원소를 출력하는 while문을 만들어보세요.
-
+while(i < arr.length) {
+  console.log(arr[i]);
+  i++;  
+}
 
 // for ... of : 인덱스를 경유하지 않고 각 원소에 직접 접근
 
 
 
+
 /* 10. 함수 : 코드를 재사용하기 위해 씁니다.
 - 1. 기본형
-  function 함수명(파라미터1, 파라미터2, 파리미터3 ...) {
-      파라미터를 받아서 실행할 실행문
-      return 달고 돌아갈 덩어리 하나    
-}
+function 함수명(파라미터1, 파라미터2, 파리미터3 ...) {
+  파라미터를 받아서 실행할 실행문
+  return 달고 돌아갈 덩어리 하나    
+  }
+  */
+ // 입력도 안받고 결과 출력
+  function hello() {
+    console.log('안녕하세요');
+  }
+  
+  hello();
+  //  == 
+  console.log('안녕하세요');
+  
+  function hello2(name) {
+    console.log(`안녕하세요 ${name}님`);
+  }
+  
+  hello2('짱구');
 
+  function hello3(name, age) {
+    console.log(`안녕하세요 ${name}님, 나이는 ${age}세 입니다.`);
+  }
+  hello3('짱구', 5);
+  hello3(5,'짱구'); // 순서가 바뀌면 출력도 바뀝니다. (순서 중요)
+
+  function hello4(name, age) {
+    age--;
+  return `안녕하세요 ${name}님, 만 나이는 ${age}세 입니다.`;
+  }
+  
+  var result = hello4('짱구', 5);
+  console.log(result);
+
+  function hello5() {
+    return '반갑습니다.';
+  }
+  var result2 = hello5();
+  console.log(result2);
+
+  var num = 1;
+  function oddNum(num) {
+    var arrNum = [];
+    for(var i = 0; i <= 5; i++) {
+      if(i % 2 === 1) {
+        // console.log(i);
+        arrNum.push(i);
+      }
+    }
+    return arrNum;
+  }
+
+  var result3 = oddNum(num);
+  for(var i in result3) {
+    console.log(result3[i]);
+  }
+    // console.log(result3);
+
+  // start 부터 end까지 홀수를 출력합니다.
+  function setOddNums(start, end) {
+    var arrNum = [];
+    for(var i = start; i <= end; i++) {
+      if(i % 2 === 1) {
+        arrNum.push(i);
+      } 
+    }
+    return arrNum;  
+  }  
+  
+  var result4 = setOddNums(3, 15);
+    console.log(result4);
+
+  // for(var i in result4) {
+  //   console.log(result4[i]);
+  // } 
+
+  function odd(start, end) {
+    for(let i = start; i <= end; i += 2) {
+      if(i % 2 === 1){
+        console.log(i);
+      }
+    }
+  }
+
+  odd(-3, 10);
+
+  
+
+  // return의 역할 
+    // 1. 함수를 종료시킵니다.
+    // 2. 뒤에 만들어진 값을 메모리에 돌려줍니다.
+
+  /*
 - 2. 익명함수: lambda처럼 쓰고 버리는 걸 기본으로 합니다.
 - var 함수명 = function(파라미터1, 파라미터2, 파리미터3 ...) {
       파라미터를 받아서 실행할 실행문
       return 달고 돌아갈 덩어리 하나
 }
 
+*/
+
+/*
 -3. 화살표함수: () => { 동작 }
 */
 
