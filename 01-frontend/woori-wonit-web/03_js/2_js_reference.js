@@ -55,16 +55,50 @@ console.log(set1);
 //   - key 중심으로 움직입니다. value로 key를 찾을 수 없습니다.
 //   - key의 자료형은 string, number, boolean, null, undefined, symbol이 가능합니다.
 //   - value는 모든 자료형이 가능합니다. (기본자료형, 참조자료형 모두 가능)
+var dict1 = {"name" : "짱구", "age" : 5, "gender" : "남자", "friends" : ["훈이", "유리", "맹구"]};
+console.log(dict1["friends"]);
 
+var dict2 = {"가" : "가위", "나" : "나비", "라" : "라디오", "다" : "다람쥐", 1 : 1010, true : {'참' : true}, "마" : "마이크"}; 
+console.log(dict2["가"]);
+console.log(dict2);
+dict2["가"] = "가방"; // 중복된 key로 삽입하면 나중에 삽입한 값으로 덮어씌워집니다.
+dict2["마"] = "마우스"; // 새로운 key로 삽입하면 추가됩니다.
+console.log(dict2);
+delete dict2["라"]; // key를 삭제할 수 있습니다.
+console.log(dict2);
+console.log('가' in dict2); // key가 존재하면 true
+console.log('라' in dict2); // key가 존재하지 않으면 false
+// undefined (객체에는 size 속성이 없습니다.)
+Object.keys(dict2); // key만 배열로 반환
+console.log(Object.keys(dict2));
+console.log(Object.values(dict2)); 
 
 /* -4. Map: dictionary와 마찬가지로 키-값으로 쌍을 저장합니다. 키로 값을 꺼내 씁니다.
+    - 데이터가 실어 나느는 양이 많을 때, 데이터 찾기가 빠르고 순서가 보장되어야 할 때, 
     - 키로 모든 데이터 타입을 받아줍니다. 
     - 삽입 순서대로 요소를 반복할 수 있습니다.
     - size 속성을 사용해서 요소의 개수를 확인할 수 있습니다.
     - set() get()으로 삽입, 조회를 할 수 있습니다.
     - 뎁스가 복잡하거나, 데이터의 입력 순서, 양이 많을 때 
 */
+var map1 = new Map();
+map1["age"] = 5; // 직접 접근하지 않으려고 메서드를 사용
+map1.set("name", "짱구");
 
+// 함수: 코드의 순서를 정해서 한번에 부를 수 있도록(호출할 수 있도록) 만들어 놓은 덩어리
+       // 입력에 대해 일관된 출력을 보장하는 코드 덩어리
+       // 프로그램에서 함수는 getter, setter 밖에 없습니다.
+
+var map2 = new Map(); // Map을 사용할 때는 메서드를 경유해서 접근
+map2.set("나", "나비");
+map2.set("다", "다람쥐");
+map2.set(1, 1010);
+map2.set("다", "다리미"); // 중복된 key를 사용하면 나중에 들어온 값으로 덮어씌워짐.
+map2.delete("나");
+console.log(map2.get("다")); // key로 value를 조회 
+console.log(map2);
+console.log([...map2]); // Map을 배열로 변환
+console.log([...map2.keys()]); // Map을 배열로 변환
 
 /*
 9. 반복문: for/while
@@ -72,12 +106,53 @@ console.log(set1);
   반복되어야 할 실행문
 }
 */
+// for(var i = 0; i < 10; i++) {
+//   console.log(i);
+//   for(var j = 0; j < 10; j++) {
+//     console.log(j);
+//   }
+// }
 
+/*
+  (좋은 코드)
+  1. 짧은 코드 (수정할 때도 코드 10줄에 에러가 1번씩 정도 남.) -> 수정할 때 용이.
+  2. 불필요한 동작이 없는 코드
+  3. 변수명, 함수명 등이 직관적이어서 이해할 수 있는 코드
+  4. 주석이 잘 달려 있어서 이해하기 쉬운 코드
+*/
+
+// 구구단
+for(var i = 2; i < 10; i++) {
+  for(var j = 1; j < 10; j++) {
+    console.log(i + " x " + j + " = " + (i*j));
+  }
+}
 // 실습: 5, 3, 1이 출력되도록 변경
-
+for(var i = 5; i > 0; i -= 2) {
+  console.log(i);
+}
+var arr = ['짱구', '짱아', '훈이', '유리', '맹구', '철수'];
 // 배열의 길이는 .length 라는 속성으로 확인
+console.log(arr.length);
+arr.indexOf('짱아'); // indexOf(찾을 값) : 배열에서 찾을 값의 index를 반환, 없으면 -1 반환
 
+for(var i = 0; i < arr.length; i++) {
+  console.log(`${arr[i]}야 안녕`);
+}
 
+dict2
+// forEach (인덱스를 경유하지 않고 바로 값만 출력하는 메서드)
+for(var key in dict2) {
+  console.log(key, dict2[key]);
+}
+
+map2
+for(var [key, value] of map2) {
+  console.log(key, value);
+}
+
+// for in : True/False로 더이상 끄집어 낼 게 없으면 끝나는 방문
+// for of : 직접 방에 접근해서 갑을 끄집어내는 방문
 
 // -2. while문 - 반복할 횟수가 정해지지 않았을 때
 // 1. while문 바깥에 조건을 끝낼 실마리를 만들어주기
@@ -86,9 +161,6 @@ console.log(set1);
 
 
 // arr 와 .length 속성을 이용해서 arr의 모든 원소를 출력하는 while문을 만들어보세요.
-
-
-// forEach (인덱스를 경유하지 않고 바로 값만 출력하는 메서드)
 
 
 // for ... of : 인덱스를 경유하지 않고 각 원소에 직접 접근
