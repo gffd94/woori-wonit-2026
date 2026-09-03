@@ -348,6 +348,8 @@ var arr = ['짱구', '짱아', '훈이']
  - sugar coated 문법: 다른 언어와 호환되다 보니까 class 클래스명으로 만들면 내부적으로 코드를 변환해서 동작시켜줍니다. 
 */
 
+
+
 function Person(name, age) {
   this.name = name;
   this.age = age;
@@ -361,4 +363,138 @@ Person.prototype.greet = function () {
 // 인스턴스를 통해 접근하는 인스턴스 변수(this로 전달), 인스턴스 메서드
 // 은닉성 구현: #을 붙인 private 변수를 사용하여 외부에서 접근하지 못하도록 숨길 수 있습니다.
 
+class Person2 {
+
+  // 생성자(constructor) : 객체가 처음 만들어 질 때 1번 자동으로 호출되는 함수
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  // Person2라는 설계도를통해 만들어진 객체에게 Person2 자료형에만 동작하는 함수를 넘겨주는 것. (메서드)
+  greet() {
+    console.log(`안녕하세요! ${this.name}입니다.`);
+  }
+}
+
+class Fighter extends Person2 {
+
+  fighting() {
+    console.log(`${this.name}이 싸웁니다!`);
+  }
+
+}
+
+var person2 = new Person2('짱구', 5);
+person2.greet();
+
+var go = new Fighter('고죠사토루', 100);
+go.greet();
+go.fighting();
+
+class Student extends Person2 {
+  study() {
+    console.log(`${this.name}이 공부합니다!`);
+  }
+}
+
+class OnlineFighter extends Fighter {
+  keyboardwarrior() {
+    console.log(`${this.name}이 온라인에서 싸웁니다!`);
+  }
+}
+
+var student = new Student('훈이', 5);
+student.greet();
+student.study();
+
+var onfight = new OnlineFighter('철수',3);
+onfight.greet();
+onfight.keyboardwarrior();
+
+// 클래스(설계도)
+  // 클래스 변수, 클래스 메서드
+// 인스턴스(객체)
+  // 인스턴스 변수, 인스턴스 메서드 
+
+// BankAccount 라는 은행 게죄를 관리하기 위한 class 생성
+// bankName, name, accountNumber, balance
+// #을 앞에 붙여서 외부에서 접근이 불가능하게 할 수 있음.
+class BankAccount {
+  // static 이라는 키워드를 앞에 적어둔 클래스 변수로 클래스에서 
+  // 클래스 변수로 클래스에서 관리하기 위한 속성을 저장
+  #balance;
+  
+  static bankName = '우리';
+  static accountNo = 0;
+
+  // static 이라는 키워드로 클래스에서 필요한 동작을 정의
+  static hello() {
+    console.log(`어서오세요 ${this.bankName}은행 입니다. 개설 이래 현재까지 ${this.accountNo}개의 계좌가 있답니다.`);
+  }
+
+  // 인스턴스 변수
+  constructor(name, accountNumber, balance) {
+    this.name = name;
+    this.accountNumber = accountNumber;
+    this.#balance = balance;
+    this.cusAccountno = ++BankAccount.accountNo; // 그때의 계좌 수
+  }
+
+  // get -> 조회용, set -> 수정
+  // 매서드 인걸 숨기고 변수처럼 보이게 하려고 deposit = 값; 사용
+  // 입금 - 기존 balance에 새로 들어온 금액을 추가, setter 값을 변경만 하는 함수
+  set deposit(amount) {
+    this.#balance += amount;
+  }
+
+  // 출금 - 기존 balance에 차감되는 금액을 삭제, setter 값을 변경만 하는 함수
+  set withdraw(amount) {
+    this.#balance -= amount;
+  }
+
+  get checkAmount() {
+    return this.#balance;
+  }
+
+}
+
+
+var iU = new BankAccount('IU', 123-456, 30000000);
+iU.deposit = 30000;
+iU.withdraw = 3000;
+
+console.log(BankAccount.bankName);
+BankAccount.hello();
+console.log(iU.checkAmount);
+// 객체지향프로그래밍의 결과를 최대한 살려서 작성해봅시다.
+// BankAccount를 상속받은 InsAccount를 만들어 주세요.
+// 클래스 변수를 banknName = "동양" 으로 바꿔서 재정의 (override)
+// 생성자에 kind 라는 인스턴스 변수를 추가해서 default값은 변액 ,, 정액 등 보험의 종류를 넣을 수 있도록 추가 해보세요.
+class InsAccount extends BankAccount {
+
+  static bankName = '동양';
+
+  constructor(name, accountNumber, balance, kind = '변액') {
+    super(name, accountNumber, balance);
+    this.kind = kind;
+  }
+
+  set setKind(kind) {
+    this.kind = kind;
+  }
+
+  get getKind() {
+    return this.kind;
+  }
+}
+
+var visa = new InsAccount("aa",12312-1313,300000);
+console.log(InsAccount.bankName);
+console.log(visa.getKind);
+visa.setKind = '차액';
+console.log(visa.getKind);
+visa.deposit = 3000;
+visa.withdraw = 300;
+console.log(visa.checkAmount);
 
