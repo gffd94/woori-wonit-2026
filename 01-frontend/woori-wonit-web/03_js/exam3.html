@@ -17,5 +17,25 @@
             <li>철수</li>
         </ul>
     </div>
+
+    <script>
+        // document.getElementById("아이디명"): html에 아이디 한개
+        // document.getElementsByClassName(클래스명) : html에서 클래스 단위로 묶음
+        // document.getElementsByTagName(태그명) 
+        // document.querySelector(모두 혼용 가능) #id명, .클래스명
+
+        function myfun() {
+            // document.querySelector('#one').innerHTML = '<img src ="./jjanggu.png">';
+            for(var i = 0; i< document.getElementsByClassName('title').length; i++) {
+                document.getElementsByClassName('title')[i].innerHTML = '이미지 변경 완료';
+            }
+        }
+
+        function myfun2() {
+            document.getElementsByTagName('ul')[0].innerHTML = '<img src ="./jjanggu.png">';
+        }
+
+    </script>
+
 </body>
 </html>

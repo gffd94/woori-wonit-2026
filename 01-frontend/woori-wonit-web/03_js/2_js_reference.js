@@ -498,3 +498,17 @@ visa.deposit = 3000;
 visa.withdraw = 300;
 console.log(visa.checkAmount);
 
+// 변수명은 count
+// add() 누를 때마다 count + 1 추가
+var count = 0;
+function add () {
+  return count++;
+}
+// minus() 누를 때마다 count -1 감소
+function minus() {
+  if(count <= 0) {
+    return 0;
+  } 
+  return count--;
+}
+

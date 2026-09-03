@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+
+    <h2 id="num">0</h2>
+    <input type="button" value="+" id="plusButton">
+    <!-- 이벤트 핸들러에 click이 발생하면 하나씩 값을 빼도록 -->
+    <input type="button" value="-" id="minusButton">
+    <!-- 이벤트 핸들러에 함수를 달아서 맡기는 방식으로 변경 -->
+    <input type="button" value="reset" id="resetButton">
+
+    <script>
+        // 변수명은 count
+        var count = parseInt(document.getElementById("num").innerText);
+        function render(value) {
+            document.getElementById("num").innerText = value;
+        }
+        
+        // add() 누를 때마다 count + 1 추가
+        const plusButton = document.getElementById("plusButton");
+        plusButton.addEventListener('mouseover', () => {
+            count++;
+            render(count);
+        });
+        // minus() 누를 때마다 count -1 감소
+        const minusButton = document.getElementById("minusButton");
+        minusButton.addEventListener('mouseover', () => {
+            if(count <= 0) {
+                count = 0;
+            } else {
+                count--;
+            }
+
+            render(count);
+        });
+
+        const resetButton = document.getElementById("resetButton");
+        resetButton.addEventListener('click', () => {
+            count = 0;
+            render(count);
+        });
+
+    </script>
+
+</body>
+</html>
